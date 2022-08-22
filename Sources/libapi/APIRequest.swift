@@ -20,7 +20,7 @@ public protocol APIRequest {
 public enum AuthMethod {
     case noAuth
     case apiKey
-    case basicHTTPAuth(_ token: String)
+    case bearer(_ token: String)
 }
 
 public enum HTTPMethod {
