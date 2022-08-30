@@ -17,10 +17,20 @@ public protocol APIRequest {
     var params  : Dictionary<String, String> { get }
 }
 
-public enum AuthMethod {
+public enum AuthMethod: Equatable {
     case noAuth
     case apiKey
     case bearer(_ token: String)
+    
+    public static func ==(l: Self, r: Self) -> Bool {
+        switch (l, r) {
+        case (.noAuth, .noAuth): return true
+        case (.apiKey, .apiKey): return true
+        case (.bearer(let lk), .bearer(let rk)): return lk == rk
+        default:
+            return false
+        }
+    }
 }
 
 public enum HTTPMethod {
