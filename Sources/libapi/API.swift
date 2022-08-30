@@ -23,6 +23,11 @@ open class API {
         case VERBOSE, ERROR, SILENT
     }
     
+    public enum APIError: Error {
+        case emptyResponse(_ status: Int)
+        case badResponse(_ status: Int)
+    }
+    
     public init(baseURL: URL, apiKey: String? = nil) {
         self.baseURL = baseURL
         self.apiKey = apiKey
@@ -75,6 +80,13 @@ open class API {
                 }
                 
                 completion(nil, error)
+            }
+            
+        } else if let response = response as? HTTPURLResponse {
+            if 200..<400 ~= response.statusCode {
+                completion(nil, APIError.emptyResponse(response.statusCode))
+            } else {
+                completion(nil, APIError.badResponse(response.statusCode))
             }
         } else {
             completion(nil, error)
