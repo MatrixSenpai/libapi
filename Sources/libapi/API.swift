@@ -23,7 +23,7 @@ open class API {
         case VERBOSE, ERROR, SILENT
     }
     
-    init(baseURL: URL, apiKey: String? = nil) {
+    public init(baseURL: URL, apiKey: String? = nil) {
         self.baseURL = baseURL
         self.apiKey = apiKey
         

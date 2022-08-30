@@ -79,14 +79,14 @@ Then, in your app, simply call `api.getCurrentWeather("44444")` to access it.
 
 Include the following line in your dependencies 
 ```swift
-.package(url: "https://github.com/MatrixSenpai/api-common.git", .from("1.0.0"))
+.package(url: "https://github.com/MatrixSenpai/libapi.git", from: "1.0.0")
 ```
 
 And import it as follows
 ```swift
 .target(name: "MyTarget", dependencies: ["libapi"])
 // OR
-.target(name: "MyTarget", dependencies: ["libapi+rxswift", "RxSwift"])
+.target(name: "MyTarget", dependencies: ["libapi", .product(name: "libapi+rxswift", package: "libapi"), "RxSwift"])
 ```
 
 #### CocoaPods
