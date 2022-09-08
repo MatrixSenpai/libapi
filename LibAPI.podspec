@@ -27,4 +27,11 @@ Pod::Spec.new do |spec|
         sub.source_files = 'Sources/libapi+rxswift/**/*.swift'
         sub.exclude_files = 'Sources/libapi/**'
     end
+
+    spec.subspec 'LibAPI+Combine' do |sub|
+        sub.dependency 'LibAPI/Core', spec.version.to_s
+
+        sub.source_files = 'Sources/libapi+combine/**/*.swift'
+        sub.exclude_files = 'Sources/libapi/**'
+    end
 end

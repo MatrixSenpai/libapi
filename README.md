@@ -87,17 +87,23 @@ And import it as follows
 .target(name: "MyTarget", dependencies: ["libapi"])
 // OR
 .target(name: "MyTarget", dependencies: ["libapi", .product(name: "libapi+rxswift", package: "libapi"), "RxSwift"])
+// OR
+.target(name: "MyTarget", dependencies: ["libapi", .product(name: "libapi+combine", package: "libapi")])
 ```
 
 #### CocoaPods
 
 Simply include the pod name, as follows
 ```ruby
-# This line includes the Rx extensions by default
+# Includes the Rx extensions by default
 pod 'LibAPI'
 
-# If you DON'T want the extensions, use this line
+# If you DON'T want the extensions
 pod 'LibAPI/Core'
+
+# If you want to use Combine instead of RxSwift
+pod 'LibAPI/Core'
+pod 'LibAPI/LibAPI+Combine'
 ```
 
 #### Carthage
