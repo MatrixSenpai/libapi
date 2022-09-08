@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
     spec.name          = 'LibAPI'
-    spec.version       = '1.0.4'
+    spec.version       = '1.0.5'
     spec.license       = { :type => 'GPLv3', :file => 'License.md' }
     spec.homepage      = 'https://github.com/MatrixSenpai/libapi.git'
     spec.authors       = { 'Mason Phillips' => 'math.matrix@icloud.com' }
@@ -25,6 +25,13 @@ Pod::Spec.new do |spec|
         sub.dependency 'RxSwift', '~> 6.5.0'
         
         sub.source_files = 'Sources/libapi+rxswift/**/*.swift'
+        sub.exclude_files = 'Sources/libapi/**'
+    end
+
+    spec.subspec 'LibAPI+Combine' do |sub|
+        sub.dependency 'LibAPI/Core', spec.version.to_s
+
+        sub.source_files = 'Sources/libapi+combine/**/*.swift'
         sub.exclude_files = 'Sources/libapi/**'
     end
 end

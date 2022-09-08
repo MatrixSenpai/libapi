@@ -4,6 +4,11 @@ import PackageDescription
 
 let package = Package(
     name: "libapi",
+    platforms: [
+        .iOS(.v14),
+        .macOS(.v11),
+        .watchOS(.v6),
+    ],
     products: [
         .library(name: "libapi", targets: ["libapi"]),
         .library(name: "libapi+rxswift", targets: ["libapi+rxswift"])
@@ -14,6 +19,7 @@ let package = Package(
     targets: [
         .target(name: "libapi", dependencies: []),
         .target(name: "libapi+rxswift", dependencies: ["RxSwift", "libapi"]),
+        .target(name: "libapi+combine", dependencies: ["libapi"]),
         .testTarget(name: "libapiTests", dependencies: ["libapi"]),
     ]
 )
