@@ -63,7 +63,7 @@ open class API {
         }
 
         logger.info("<API> URL Request built: \(components.string ?? "URL FAILED TO BUILD")", file: #file, function: #function, line: #line)
-        return URLRequest(url: baseURL)
+        return urlRequest
     }
     
     open func handleResponse<T: APIRequest>(_ request: T, data: Data?, response: URLResponse?, error: Error?, completion: @escaping APIResponse<T>) -> Void {
@@ -73,7 +73,7 @@ open class API {
                 logger.info("<API> Response Recieved: \(json)", file: #file, function: #function, line: #line)
                 completion(json, nil)
             } catch {
-                let decoded = try? self.decoder.decode(String.self, from: data)
+                let decoded = String(data: data, encoding: .utf8)
                 logger.error("<API> Unexpected Response: \(decoded ?? "COULD NOT DECODE RESPONSE AS STRING")", file: #file, function: #function, line: #line)
 
                 completion(nil, error)
