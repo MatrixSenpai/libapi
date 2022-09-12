@@ -63,7 +63,7 @@ open class API {
         }
 
         logger.info("<API> URL Request built: \(components.string ?? "URL FAILED TO BUILD")", file: #file, function: #function, line: #line)
-        return URLRequest(url: baseURL)
+        return urlRequest
     }
     
     open func handleResponse<T: APIRequest>(_ request: T, data: Data?, response: URLResponse?, error: Error?, completion: @escaping APIResponse<T>) -> Void {
