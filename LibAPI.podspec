@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
     spec.name          = 'LibAPI'
-    spec.version       = '1.0.6'
+    spec.version       = '1.0.7'
     spec.license       = { :type => 'GPLv3', :file => 'License.md' }
     spec.homepage      = 'https://github.com/MatrixSenpai/libapi.git'
     spec.authors       = { 'Mason Phillips' => 'math.matrix@icloud.com' }
